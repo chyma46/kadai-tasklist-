@@ -1,8 +1,11 @@
 <h1>タスク詳細</h1>
 
-<p>内容: <%=@task.content %></p>
-<p>状態: <%=@task.status %></p>
+<table class="table table-bordered">
+  <tr><th>id</th><td><%= @task.id %></td></tr>
+  <tr><th>内容</th><td><%= @task.content %></td></tr>
+  <tr><th>状態</th><td><%= @task.status %></td></tr>
+</table>
 
 
-<p><%= link_to '編集', edit_task_path %> | <%= link_to '削除', @task, method: :delete, data: {confirm: '削除してよろしいですか？'} %></p>
-<p><%= link_to '一覧に戻る', tasks_path %></p>
+<%= link_to '編集', edit_task_path, class: "btn btn-default" %>
+<%= link_to '削除', @task, method: :delete, data: {confirm: '削除してよろしいですか？'}, class: "btn btn-danger" %>
