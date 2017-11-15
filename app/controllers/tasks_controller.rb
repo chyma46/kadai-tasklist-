@@ -1,6 +1,10 @@
 class TasksController < ApplicationController
+  include SessionsHelper
+  
+  before_action :require_user_logged_in
+  
   def index
-    @tasks=Task.all
+    @tasks=current_user.tasks.all
   end
   
   def show
@@ -8,11 +12,11 @@ class TasksController < ApplicationController
   end
   
   def new
-    @task=Task.new
+    @task=current_user.tasks.build
   end
   
   def create
-    @task=Task.new(task_params)
+    @task=current_user.tasks.new(task_params)
     if @task.save
       flash[:success]='タスクが作成されました。'
       redirect_to @task
