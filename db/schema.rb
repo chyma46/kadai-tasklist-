@@ -31,3 +31,4 @@ ActiveRecord::Schema.define(version: 20171115033124) do
 
   add_foreign_key "tasks", "users"
 end
+a
